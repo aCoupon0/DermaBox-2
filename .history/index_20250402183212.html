@@ -1,0 +1,276 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermaBox | Creador de Rutinas Skincare Personalizadas</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <header>
+        <p class="logo">DermaBox</p>
+        <button class="log-in">Iniciar Sesión</button>
+    </header>
+
+    <section class="hero">
+        <p>Rutinas de cuidado facial personalizadas</p>
+    </section>
+
+    <section class="carrusel">
+        <div class="carruselContent" id="carruselContent">
+            <div class="carruselTitle">
+                <p></p>
+            </div>
+            <div class="carruselDescription">
+                <p></p>
+            </div>
+        </div>
+        <div class="carruselSteps">
+            <div class="step" id="0"></div>
+            <div class="step" id="1"></div>
+            <div class="step" id="2"></div>
+            <div class="step" id="3"></div>
+        </div>
+    </section>
+
+    <button class="quizOpener" id="quizOpener">Empezar</button>
+
+
+    <div class="productCarruselTitle">
+        <p>Rutinas disponibles</p>
+        <p>Después del quiz, podrás escoger qué rutina prefieres</p>
+    </div>
+
+    <div class="routineCard base">
+        <p class="routineCardTitle">RUTINA BASE</p>
+        <p class="routineCardDescription">Incluye productos de calidad Estándar.</p>
+        <div class="separador"></div>
+        <div class="routineAdvantageContainer">
+            <p class="routineAdvantage"><i class="fa-solid fa-3"></i> Productos</p>
+            <p class="routineAdvantage"><i class="fa-solid fa-circle"></i> Solo lo necesario</p>
+            <p class="routineAdvantage"><i class="fa-solid fa-circle"></i> Perfecta para principiantes</p>
+        </div>
+        <div class="priceZoneContainer">
+            <div class="priceZone basePrice">
+                $80.000
+            </div>
+        </div>
+    </div>
+
+    <div class="routineCard premium">
+        <p class="routineCardTitle">RUTINA PREMIUM</p>
+        <p class="routineCardDescription">Incluye productos de calidad Premium.</p>
+        <div class="separador"></div>
+        <div class="routineAdvantageContainer">
+            <p class="routineAdvantage"><i class="fa-solid fa-3"></i>-<i class="fa-solid fa-4"></i> Productos</p>
+            <p class="routineAdvantage"><i class="fa-solid fa-circle"></i> Ingredientes más puros</p>
+            <p class="routineAdvantage"><i class="fa-solid fa-circle"></i> Mejores resultados</p>
+        </div>
+        <div class="priceZoneContainer">
+            <div class="priceZone premiumPrice">
+                $200.000
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+
+    <div class="productCarruselTitle second">
+        <p>Algunos de los productos</p>
+        <p>Que podrían salir en tu rutina personalizada</p>
+    </div>
+
+    <div class="disclaimer"><i class="fa-solid fa-shield-halved"></i> Productos aprobados dermatológicamente</div>
+
+    <div class="routineTypeBase">EN LAS RUTINAS BASE</div>
+
+    <div class="productCarrusel" id="base">
+        <div class="productCard first">
+            <div class="productCardImg">
+                <img src="assets/products/4.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Limpiador Hidratante de CeraVe</p>
+                <p>465ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+
+        </div>
+
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/3.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Sérum de Vitamina C de CeraVe</p>
+                <p>65ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/2.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Limpiador SA Smoothing de CeraVe</p>
+                <p>465ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/3.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Limpiador Hidratante de CeraVe</p>
+                <p>465ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+
+
+        <div class="productCard last">
+            <div class="productCardImg">
+                <img src="assets/products/4.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Limpiador Hidratante de CeraVe</p>
+                <p>465ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="routineTypePremium">EN LAS RUTINAS PREMIUM</div>
+
+    <div class="productCarrusel" id="premium">
+        <div class="productCard first">
+            <div class="productCardImg">
+                <img src="assets/products/0.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Limpiador Hidratante de CeraVe</p>
+                <p>465ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/1.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Sérum de Vitamina C de CeraVe</p>
+                <p>65ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/2.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Limpiador SA Smoothing de CeraVe</p>
+                <p>465ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/3.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Limpiador Hidratante de CeraVe</p>
+                <p>465ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+
+
+        <div class="productCard last">
+            <div class="productCardImg">
+                <img src="assets/products/4.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Limpiador Hidratante de CeraVe</p>
+                <p>465ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Serúm anti-ácne con 2% de ácido salícilico.</p>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+
+
+
+    <div class="quizModal" id="quizModal">
+        <div class="quizHeader">
+            <button class="quizCloser" id="quizCloser">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <p>Cuestionario</p>
+        </div>
+
+        <div class="quizContent" id="quizContent">
+
+        </div>
+
+        <div class="nextButtonContainer">
+            <div class="progressBar">
+                <p>Pregunta 1 de 5</p>
+            </div>
+            <button class="nextButton" id="nextButton">Siguiente</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>®© 2025. Todos los derechos reservados</p>
+    </footer>
+    <script src="js/data-description.js"></script>
+    <script src="js/data.js"></script>
+    <script defer src="js/index.js"></script>
+</body>
+
+</html>

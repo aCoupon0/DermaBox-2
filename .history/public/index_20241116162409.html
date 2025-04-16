@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, nofollow">
+    <meta http-equiv="Content-Language" content="es">
+    <title>Rutina de Skincare Personalizada | Creador Personalizado</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preload" href="assets/exp.webp" as="image">
+    <link rel="preload" href="assets/rutina.webp" as="image">
+    <link rel="preload" href="assets/carga.webp" as="image">
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+    <meta name="description"
+        content="Crea tu rutina de Skincare personalizada, tenemos en cuenta tu tipo de piel: grasa, mixta o seca. Y tus objetivos: Reducir acné, suavizar la textura, efectos antiedad, entre otros. Descubre tu rutina perfecta aquí.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLV64FXNRZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZLV64FXNRZ');
+    </script>
+</head>
+
+<body>
+    <section id="section1">
+        <div class="bloque-1">
+            <img src="assets/logo.webp" alt="" class="logo">
+            <p class="logo-txt-1">DERMA</p>
+            <p class="logo-txt-2">BOX</p>
+        </div>
+        <div class="bloque-2">
+            <h1>Creador de rutinas Skincare personalizadas</h1>
+        </div>
+        <div class="bloque-3">
+            <div class="bloque-3-1">
+                <p class="text-1">Solo debes contestar el cuestionario</p>
+                <p class="text-2">Y el algoritmo te creará una rutina, paso a paso.
+                    <span class="hb-font">
+
+                </p>
+            </div>
+            <div class="separador"></div>
+            <div class="bloque-3-1">
+                <p class="text-1">Es apto para cualquier presupuesto</p>
+                <p class="text-2">
+                    De cada paso podrás escoger entre un <br> producto <span class="hb-font estandar">Estándar</span> y
+                    uno <span class="hb-font premium">Premium</span>
+                </p>
+            </div>
+        </div>
+        <div class="bloque-how">
+            <button class="how-button">¿Cómo funciona?</button>
+        </div>
+        <div class="bloque-quiz">
+            <p>¡Empecemos a crear tu rutina!</p>
+            <p>Si ya estás listo, dale a <b>Empezar</b> <br> para contestar el quiz</p>
+        </div>
+        <div class="bloque-4">
+            <button class="scrollButton">Empezar</button>
+        </div>
+
+
+        <!-- Modal Overlay -->
+        <div id="modal-overlay" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-section section-1">
+                    <img src="assets/1.webp" alt="Imagen 1" class="modal-image">
+                </div>
+
+                <!-- Separador entre secciones -->
+                <div class="separator"></div>
+
+                <div class="modal-section section-2">
+                    <img src="assets/2.webp" alt="Imagen 2" class="modal-image">
+                </div>
+
+                <!-- Separador entre secciones -->
+                <div class="separator"></div>
+
+                <div class="modal-section section-3">
+                    <img src="assets/3.webp" alt="Imagen 3" class="modal-image">
+                </div>
+
+                <button class="close-modal">Entendido</button>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section id="section2">
+        <!-- Sección 3 -->
+        <div class="bloque-9">
+            <div class="bloque-pregunta">
+                <p>
+                    <span style="color: #B0F691; margin-left: 4vw; font-size: 7vw;" class="adjusted-span">1</span>
+                    <span style="color: rgba(176, 246, 145, 0.5); margin-right: 3vw; font-size: 4vw;" class="adjusted-span">/3</span>
+                    ¿QUÉ TIPO DE PIEL TIENES?
+                </p>
+            </div>
+            <div class="option" data-index="G">
+                <p class="no-description-option">GRASA</p>
+                <p class="description-option">Brillante y aceitosa, con poros visibles. Propensa a acné y espinillas.
+                </p>
+            </div>
+            <div class="option" data-index="M">
+                <p class="no-description-option">MIXTA</p>
+                <p class="description-option">Grasosa en algunos lugares y seca en otros.</p>
+            </div>
+            <div class="option" data-index="S">
+                <p class="no-description-option">SECA</p>
+                <p class="description-option">No tiene grasa y es áspera al tacto, suele irritarse y resecarse con
+                    facilidad.</p>
+            </div>
+            <div class="option last-option" data-index="N">
+                <p class="no-description-option">NORMAL</p>
+                <p class="description-option">No es ni grasosa ni seca, con poros pequeños y sin areas asperas.</p>
+            </div>
+            <button class="scrollButton" onclick="handleScroll(event)">Siguiente</button>
+        </div>
+    </section>
+
+    <section id="section3">
+        <div class="bloque-9">
+            <div class="bloque-pregunta">
+                <p>
+                    <span style="color: #B0F691; margin-left: 3vw; font-size: 7vw;">2</span>
+                    <span style="color: rgba(176, 246, 145, 0.5); margin-right: 2vw; font-size: 4vw;">/3</span>
+                    ¿CUÁLES SON TUS OBJETIVOS? Puedes escoger varios
+                </p>
+            </div>
+            <div class="option" data-index="RA.">
+                <p class="no-description-option">Reducir Acné</p>
+            </div>
+            <div class="option" data-index="HS.">
+                <p class="no-description-option">Hidratar y sanar</p>
+            </div>
+            <div class="option" data-index="A.">
+                <p class="no-description-option">Antienvejecimiento</p>
+            </div>
+            <div class="option last-option" data-index="TCM.">
+                <p class="no-description-option">Reducir textura y manchas</p>
+            </div>
+            <button class="scrollButton" onclick="handleScroll(event)">Siguiente</button>
+        </div>
+    </section>
+
+    <section id="section4">
+        <!-- Sección 5 -->
+        <div class="bloque-9">
+            <div class="bloque-pregunta">
+                <p>
+                    <span style="color: #B0F691; margin-left: 4vw; font-size: 7vw;">3</span>
+                    <span style="color: rgba(176, 246, 145, 0.5); margin-right: 3vw; font-size: 4vw;">/3</span>
+                    ¿TIENES LA PIEL SENSIBLE?
+                </p>
+            </div>
+            <div class="option" data-index="S">
+                <p class="no-description-option">SI</p>
+                <p class="description-option">Se irrita y se quema facilmente. Suelo tener rosácea con bastante
+                    frecuencia.</p>
+            </div>
+            <div class="option" data-index="N">
+                <p class="no-description-option">MÁS O MENOS</p>
+                <p class="description-option">Se puede llegar a irritar con algunos productos.</p>
+            </div>
+            <div class="option last-option" data-index="N">
+                <p class="no-description-option">NO</p>
+                <p class="description-option">Es muy raro que se irrite y se enrojezca, solo si me quemo con el sol.</p>
+            </div>
+            <button class="scrollButton" onclick="handleScroll(event)" id="lastScroll">Terminar</button>
+        </div>
+    </section>
+
+
+    <section id="section7">
+        <!-- Sección 7 -->
+        <div class="bloque-10">
+            <div class="bloque-carga">
+                <img src="assets/carga.webp" alt="rutina-creada">
+                <div class="separador-bloque-carga"></div>
+                <p>Tu rutina ha sido creada <br> exitosamente!</p>
+            </div>
+            <img src="assets/rutina.webp" alt="" class="routine-img">
+
+
+            <button id="endButton">Entendido</button>
+        </div>
+    </section>
+
+    <script src="/js/main.js"></script>
+    <script>
+        let scrollCount = 0; // Contador de clics en los scrollButtons
+
+        // Función para manejar el clic en los scrollButtons
+        function handleScroll(event) {
+            scrollCount++; // Aumentar el contador por cada clic en un scrollButton
+
+            // Verificar si es el primer clic en el scrollButton
+            if (scrollCount === 1) {
+                // Enviar el evento a Google Analytics con la etiqueta 'Inicio Quiz'
+                gtag('event', 'InicioCuestionario', {
+                    'event_category': 'Interaction',
+                    'event_label': 'Inicio Quiz',
+                    'value': scrollCount
+                });
+            }
+
+            // Enviar el evento a Google Analytics cada vez que se presiona un scrollButton
+            gtag('event', 'AvanzoCuestionario', {
+                'event_category': 'Interaction',
+                'event_label': 'Scroll Button ' + scrollCount,
+                'value': scrollCount
+            });
+
+            // Si el número de clics alcanza 4, marcar el evento como 'Reached End'
+            if (scrollCount === 4) {
+                gtag('event', 'TerminoCuestionario', {
+                    'event_category': 'Interaction',
+                    'event_label': 'Reached End',
+                    'value': scrollCount
+                });
+            }
+        }
+
+        // Función para manejar el clic en el howButton
+        function handleHowButton() {
+            // Enviar el evento al Google Analytics con el evento 'How Button Clicked'
+            gtag('event', 'PresionoHowButton', {
+                'event_category': 'Interaction',
+                'event_label': 'How Button',
+                'value': 1
+            });
+        }
+
+        // Asociar la función a todos los botones con la clase 'scrollButton'
+        document.querySelectorAll('.scrollButton').forEach(button => {
+            button.addEventListener('click', handleScroll);
+        });
+
+        // Asociar la función al howButton
+        const howButton = document.querySelector('.howButton');
+        if (howButton) {
+            howButton.addEventListener('click', handleHowButton);
+        }
+
+    </script>
+</body>
+
+</html>

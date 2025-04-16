@@ -1,0 +1,941 @@
+@font-face {
+    font-family: 'ML';
+    src: url('../assets/fonts/Montserrat-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MB';
+    src: url('../assets/fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DR';
+    src: url('../assets/fonts/Della-Respira.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RR';
+    src: url('../assets/fonts/Radley-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CI';
+    src: url('../assets/fonts/Cormorant-Infant.ttf') format('truetype');
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: auto;
+    /* La altura es exactamente la altura de la ventana */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Permite que se haga scroll si hay más contenido */
+    font-size: 10px;
+    box-sizing: border-box;
+    padding: 1.3rem 0 0 0;
+    margin: 0;
+    z-index: 1;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('../assets/bg.webp') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    /* Para que quede detrás del contenido */
+}
+
+
+.overlay {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.076);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+.firstInfo {
+    height: auto;
+    width: auto;
+    padding: 0.8rem 1.4rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: rgb(32, 32, 32);
+    z-index: 8;
+    box-sizing: border-box;
+}
+
+.firstInfo i {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.firstInfo p {
+    font-family: "MB";
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.secondInfo {
+    height: auto;
+    width: 100%;
+    padding: 1.7rem 1.4rem 0.8rem 1.4rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4vw;
+    color: rgb(65, 65, 65);
+    z-index: 8;
+    box-sizing: border-box;
+}
+
+.secondInfo i {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.secondInfo p {
+    font-size: 0.9rem;
+    font-family: "MB";
+    margin: 0;
+}
+
+.routineCarrusel {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.2rem 0.8rem 0.8rem 0.8rem;
+    gap: 0.8rem;
+    z-index: 8;
+    box-sizing: border-box;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+}
+
+.routineCarrusel::-webkit-scrollbar {
+    display: none;
+}
+
+.routineCard {
+    flex: 0 0 77vw;
+    height: auto;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0rem 0rem 1rem 0 ;
+}
+
+.base {
+    background: linear-gradient(355deg, #e5f9fd, white);
+    opacity: 0.8;
+}
+
+.premium {
+    background: linear-gradient(355deg, #fff5da, white);
+    opacity: 0.95;
+}
+
+.routineTitleBase {
+    width: 100%;
+    height: 3rem;
+    border-top-left-radius: 5vw;
+    border-top-right-radius: 5vw;
+    background-color: #c6e7ed;
+    color: #055966;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "MB";
+    font-size: 1rem;
+}
+
+.routineTitlePremium {
+    width: 100%;
+    height: 3rem;
+    border-top-left-radius: 5vw;
+    border-top-right-radius: 5vw;
+    background-color: #fdedb1;
+    color: #6b5500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "MB";
+    font-size: 1rem;
+}
+
+.routinePhotoZone {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.7rem;
+    box-sizing: border-box;
+    padding: 0.5rem 0rem 0rem 0rem;
+}
+
+.routinePhotoZone img {
+    width: 25%;
+    height: auto;
+    margin: 0;
+    transition: width 0.5s ease-in-out;
+}
+
+#sunscreenImg1 {
+    height: auto;
+    width: 0;
+}
+
+#sunscreenImg1.included {
+    width: 25%;
+}
+
+#sunscreenImg2 {
+    height: auto;
+    width: 0;
+}
+
+#sunscreenImg2.included {
+    width: 25%;
+}
+
+#sunscreenImg3 {
+    height: auto;
+    width: 0;
+}
+
+#sunscreenImg3.included {
+    width: 25%;
+}
+
+.productsIncluded {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.7rem;
+    transition: height 0.5s ease-in-out;
+}
+
+.productIncludedLabel {
+    width: 100%;
+    height: 1rem;
+
+    box-sizing: border-box;
+    padding: 0.2rem 0.4rem 0.2rem 1.3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "MB";
+    font-size: 0.8rem;
+}
+
+.productIncludedName {
+    width: 100%;
+    height: 1rem;
+    width: 100%;
+    height: 1rem;
+    box-sizing: border-box;
+    padding: 0.1rem 0.4rem 0.1rem 1.3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "ML";
+    font-size: 0.7rem;
+}
+
+.productIncludedName p {
+    white-space: nowrap;           /* Evitar saltos de línea */
+    overflow: hidden;              /* Ocultar el contenido que se sale */
+    text-overflow: ellipsis;
+    display: block;
+    color: rgb(220, 220, 220);
+}
+
+.routineDivider {
+    height: 1px;
+    width: 85%;
+    background-color: rgba(128, 128, 128, 0.264);
+}
+
+.routinePriceZone {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0.7rem 1.3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "MB";
+    color: rgb(33, 33, 33);
+    font-size: 1.7rem;
+}
+
+.benefitsZone {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem 0;
+}
+
+.benefit {
+    width: 100%;
+    height: auto;
+    padding: 0.2rem 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "MB";
+    color: rgb(33, 33, 33);
+    box-sizing: border-box;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.benefit p {
+    margin: 0;
+}
+
+.benefit i {
+    color: rgb(138, 120, 22);
+}
+
+.addSunscreen {
+    width: 90%;
+    height: auto;
+    padding: 0.7rem 0.5rem;
+    border-radius: 3vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "MB";
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+.addSunscreen p {
+    margin: 0;
+}
+
+.sunscreenBase {
+    border: 1px solid #499babb5;
+    color: #003945;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.sunscreenBase.included {
+    background-color: #0b4450;
+    color: #f6feff;
+    justify-content: center;
+}
+
+.sunscreenPremium {
+    border: 1px solid #ab8e49b5;
+    color: #452800;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.sunscreenPremium.included {
+    background-color: #6b5500;
+    color: #fff9eb;
+    justify-content: center;
+}
+
+.acquireButtonBase {
+    width: 85%;
+    height: auto;
+    padding: 1rem 0.5rem;
+    border-radius: 3vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: "MB";
+    font-size: 1rem;
+    background-color: #0b4450;
+    color: #ffffff;
+    border: none;
+}
+
+.acquireButtonPremium {
+    width: 85%;
+    height: auto;
+    padding: 1rem 0.5rem;
+    border-radius: 3vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: "MB";
+    font-size: 1rem;
+    background-color: #6b5500;
+    color: #fffcf1;
+    border: none;
+}
+
+.routineDescription {
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.872);
+    z-index: 8;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-sizing: border-box;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0.8rem;
+    border-top-left-radius: 15vw;
+    border-top-right-radius: 6vw;
+}
+
+.routineDescriptionTitle {
+    width: 100%;
+    height: auto;
+    padding: 0.5rem 1rem 1rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "DR";
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.routineDescriptionTitle p {
+    margin: 0;
+}
+
+.routineDescriptionContent {
+    width: 100%;
+    height: auto;
+    padding: 1rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.8rem;
+    background: linear-gradient(230deg, rgb(255, 255, 255), white);
+    border-top-left-radius: 6vw;
+    border-top-right-radius: 6vw;
+}
+
+.RDTitle {
+    font-family: "MB";
+    margin: 0rem 0rem 0rem 0.5rem;
+    font-size: 1.15rem;
+    text-decoration: underline;
+}
+
+.descriptionBox {
+    width: 95%;
+    height: auto;
+    margin-bottom: 0.6rem;
+}
+
+.descriptionBoxTitle {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    font-family: "MB";
+    font-size: 1.1rem;
+}
+
+.descriptionBoxTitle i {
+    font-size: 0.9rem;
+}
+
+.optionalBox {
+    font-size: 0.75rem;
+    width: auto;
+    height: auto;
+    padding: 0.1rem 0.5rem;
+    box-sizing: border-box;
+    border-radius: 1vw;
+    background-color: #003843;
+    color: #e9fcff;
+}
+
+.premiumBox {
+    font-size: 0.75rem;
+    width: auto;
+    height: auto;
+    padding: 0.1rem 0.5rem;
+    box-sizing: border-box;
+    border-radius: 1vw;
+    background-color: #5b4002;
+    color: #fffae9;
+}
+
+.descriptionBox p {
+    margin: 0;
+}
+
+.separadorBox {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(128, 128, 128, 0.256);
+}
+
+.descriptionBoxText {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0.2rem 0.7rem;
+    gap: 0.5rem;
+    font-family: "ML";
+    font-size: 0.85rem;
+    color: rgb(48, 48, 48);
+}
+
+
+.routineProducts {
+    width: 100%;
+    height: auto;
+    padding: 1rem 1rem 6rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.routineProductsLabel {
+    font-size: 1.3rem;
+    font-family: "DR";
+    font-weight: 600;
+    background-color: rgba(128, 128, 128, 0.148);
+    width: 100%;
+    height: auto;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 2vw;
+}
+
+.routineProductsCard {
+    width: 100%;
+    height: auto;
+    padding: 0.75rem 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(149, 149, 149, 0.387);
+}
+
+.routineProductsCardImg {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.routineProductsCardImg img {
+    height: auto;
+    width: 95%;
+}
+
+.routineProductsCardInfo {
+    width: 75%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0.5rem 0;
+}
+
+.RPCI-One {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2rem;
+    font-family: "ML";
+    font-size: 0.9rem;
+    color: rgb(96, 96, 96);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    flex-direction: row;
+}
+
+.RPCI-One p {
+    margin: 0;
+}
+
+.RPCI-Two {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2rem;
+    font-family: "MB";
+    font-size: 1.1rem;
+    color: rgb(0, 0, 0);
+    margin-top: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    flex-direction: column;
+    line-height: 1.2rem;
+}
+
+.RPCI-Three {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2rem;
+    font-family: "MB";
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    flex-direction: column;
+}
+
+.RPCI-Three.rutinaBase {
+    color: #055362;
+}
+
+.RPCI-Three.rutinaPremium {
+    color: #846900;
+}
+
+.RPCI-Four {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2rem;
+    font-family: "ML";
+    font-size: 0.8rem;
+    color: rgb(96, 96, 96);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    flex-direction: column;
+}
+
+.fichaBase {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    background-color: #deeef1;
+    color: rgb(40, 40, 40);
+    border-radius: 3vw;
+}
+
+.fichaPremium {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    background-color: #fff7d7;
+    color: rgb(40, 40, 40);
+    border-radius: 3vw;
+}
+
+.fichaTecnicaOne {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.fichaTecnicaOne p {
+    font-family: "ML";
+    margin: 0;
+    opacity: 0.6;
+}
+
+
+.fichaTecnicaSeparador {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(127, 127, 127);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.fichaTecnicaTwo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.1rem 0.4rem;
+    font-size: 1rem;
+    text-align: left;
+    font-family: "MB";
+    margin: 0;
+}
+
+.fichaTecnicaTwo p {
+    margin: 0;
+}
+
+.fichaTecnicaThree {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.9rem;
+    text-align: left;
+    font-family: "MB";
+    margin: 0;
+}
+
+.fichaTecnicaFour {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.75rem;
+    text-align: left;
+    font-family: "ML";
+    margin: 0;
+    opacity: 0.6;
+    box-sizing: border-box;
+}
+
+.fichaTecnicaThree p, .fichaTecnicaFour p {
+    margin: 0;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.modal.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalHeader {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0rem 1rem;
+    box-sizing: border-box;
+    gap: 0.3rem;
+}
+
+.modalHeader button {
+    width: auto;
+    height: auto;
+    padding: 0.1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.modalHeader i {
+    font-size: 1.7rem;
+    color: black;
+}
+
+.modalHeader p {
+    font-family: "MB";
+    font-size: 1rem;
+}
+
+.modalProductsContainer {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modalProduct {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+.modalProductPhoto {
+    width: 22%;
+    height: 100%;
+    border-radius: 2vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalProductPhoto img {
+    width: auto;
+    height: 90%;
+}
+
+.modalProductDescription {
+    width: 78%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.2rem;
+}
+
+.modalProductDescription p:first-child {
+    font-family: "MB";
+    font-size: 0.9rem;
+    color: black;
+    line-height: 1.1rem;
+    margin: 0;
+}
+
+.modalProductDescription p:last-child {
+    font-family: "ML";
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.759);
+    margin: 0;
+}
+
+.subTotalAndDelivery {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0rem;
+    box-sizing: border-box;
+    margin: 1rem 0rem;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.subtotal, .delivery {
+    width: 100%;
+    height: 50%;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.subtotal p:first-child {
+    font-family: "ML";
+    font-size: 1rem;
+    margin: 0;
+}
+
+.subtotal p:last-child {
+    font-family: "MB";
+    font-size: 1rem;
+    margin: 0;
+}
+
+.delivery p:first-child {
+    font-family: "ML";
+    font-size: 1rem;
+    margin: 0;
+}
+
+.delivery p:last-child {
+    font-family: "MB";
+    font-size: 0.9rem;
+    margin: 0;
+}

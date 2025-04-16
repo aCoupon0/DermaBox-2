@@ -1,0 +1,961 @@
+/* Declaración de las fuentes */
+@font-face {
+    font-family: 'ML';
+    src: url('../assets/fonts/Montserrat-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MB';
+    src: url('../assets/fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DR';
+    src: url('../assets/fonts/Della-Respira.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RR';
+    src: url('../assets/fonts/Radley-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CI';
+    src: url('../assets/fonts/Cormorant-Infant.ttf') format('truetype');
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: auto;
+    /* La altura es exactamente la altura de la ventana */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Permite que se haga scroll si hay más contenido */
+    font-size: 10px;
+    box-sizing: border-box;
+    padding: 0 0 4rem 0;
+    margin: 0;
+    z-index: 1;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg,
+            #f4e3b2 0%,
+            /* Oro pálido */
+            #f8f6f0 25%,
+            /* Marfil suave */
+            #dcd7d1 50%,
+            /* Gris perla */
+            #e8cfd1 75%,
+            /* Rosa empolvado */
+            #d8e2e8 100%
+            /* Azul grisáceo claro */
+        );
+    background-size: cover;
+    z-index: -1;
+    /* Para que quede detrás del contenido */
+}
+
+
+.overlay {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.076);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+header {
+    width: 92%;
+    height: auto;
+    padding: 0rem 1rem;
+    box-sizing: border-box;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    color: black;
+    font-size: 1.3rem;
+    font-family: 'DR';
+    z-index: 10;
+}
+
+.log-in {
+    width: 45%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.055);
+    font-size: 1rem;
+    color: black;
+    font-family: 'CI';
+    border: none;
+    border-radius: 2vw;
+    z-index: 10;
+}
+
+.hero {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.2rem 0.8rem;
+    box-sizing: border-box;
+    font-family: "CI";
+    font-size: 1.7rem;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.hero p {
+    line-height: 1.8rem;
+    margin: 0;
+}
+
+
+.carrusel {
+    width: 92%;
+    height: auto;
+    padding: 1.2rem 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(137, 43, 226, 0);
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.carruselContent {
+    height: auto;
+    width: auto;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.carruselContent.visible {
+    opacity: 1;
+}
+
+.carruselTitle {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 0.3rem 0.4rem;
+}
+
+.carruselDescription {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(0, 255, 17, 0);
+    padding: 0.3rem 0.4rem;
+    box-sizing: border-box;
+}
+
+.carruselSteps {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem 0rem;
+    gap: 3%;
+}
+
+.carruselTitle p {
+    font-family: "MB";
+    color: #2B2200;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.carruselDescription p {
+    font-family: "ML";
+    color: #2B2200;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.step {
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 100%;
+    background: linear-gradient(180deg, #1d1500, #332806);
+    opacity: 0.1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.carruselTitle p,
+.carruselDescription p {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+
+.quizOpener {
+    width: 90%;
+    height: 3.5rem;
+    background-color: #fbf9f1;
+    border-radius: 1rem;
+    color: #1e1700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "ML";
+    font-size: 1.9em;
+    margin: 0rem 0rem 55% 0rem;
+    z-index: 10;
+    border: none;
+    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+}
+
+.quizOpenerAux {
+    width: 90%;
+    height: 3.5rem;
+    background-color: #fbf9f1;
+    border-radius: 1rem;
+    color: #1e1700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "ML";
+    font-size: 1.9em;
+    margin: 0rem 0rem 35% 0rem;
+    z-index: 10;
+    border: none;
+    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+}
+
+.productCarruselTitle {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+    box-sizing: border-box;
+}
+
+.second {
+    margin-top: 18%;
+    white-space: nowrap;
+}
+
+.routineCard {
+    width: 92%;
+    height: auto;
+    padding: 0.8rem 1.2rem;
+    margin: 0.8rem 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 1rem;
+    z-index: 8;
+    border-radius: 3vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.routineCard p {
+    margin: 0;
+}
+
+.routineCard i {
+    font-size: 0.5rem;
+    margin-right: 0.4rem;
+    opacity: 0.4;
+}
+
+.routineCardTitle {
+    font-family: "MB";
+}
+
+.routineCardDescription {
+    font-family: "ML";
+    opacity: 0.7;
+}
+
+.separador {
+    width: 90%;
+    height: 1px;
+    margin-top: 0.65rem;
+    margin-bottom: 0.65rem;
+    background-color: rgba(0, 0, 0, 0.304);
+}
+
+.routineAdvantageContainer {
+    width: 100%;
+    height: auto;
+    padding: 0 0 0 0.8rem;
+    gap: 0.3rem;
+    margin-top: 0.6rem;
+}
+
+.routineAdvantage {
+    font-family: "MB";
+    margin: 0 0 0.2rem 0.5rem;
+}
+
+
+.priceZoneContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 1rem 0rem 0rem 0rem;
+}
+
+.priceZone {
+    width: auto;
+    height: auto;
+    margin-top: 0.8rem;
+    padding: 0.5rem 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "MB";
+    font-size: 1.3rem;
+    border-radius: 3vw;
+}
+
+.base {
+    background-color: #ebfcff;
+    color: #003b44;
+}
+
+.premium {
+    background-color: #fff6d4;
+    color: #392d00;
+}
+
+.premiumPrice {
+    background-color: #dad7b371;
+    color: #6c5b2c;
+}
+
+.basePrice {
+    background-color: #b3d5da71;
+    color: #2c636c;
+}
+
+.routineCardTitle,
+.routineCardDescription {
+    white-space: nowrap;
+    overflow: hidden;
+    /* Opcional: para evitar que se desborde */
+    text-overflow: ellipsis;
+    /* Opcional: para mostrar "..." si se recorta */
+}
+
+
+.productCarruselTitle p:first-child {
+    font-family: "MB";
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+
+.routineTypePremium {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "MB";
+    font-size: 1rem;
+    box-sizing: border-box;
+    padding: 0.7rem 0;
+    margin: 0.8rem 0 0 0;
+    z-index: 8;
+    background-color: #fff6d4;
+    color: #392d00;
+    white-space: nowrap;
+}
+
+.disclaimer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem 0rem 0.5rem 1rem;
+    box-sizing: border-box;
+    font-family: "ML";
+    color: rgba(0, 0, 0, 0.912);
+    font-size: 0.8rem;
+    flex-direction: row;
+    gap: 0.5rem;
+    z-index: 8;
+    background-color: rgba(255, 255, 255, 0.625);
+    border-top: 1px solid rgba(139, 139, 139, 0.209);
+}
+
+.routineTypeBase {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "MB";
+    font-size: 1rem;
+    box-sizing: border-box;
+    padding: 0.7rem 0;
+    margin: 0rem;
+    z-index: 8;
+    background-color: #0093ac25;
+    color: #001d21;
+    white-space: nowrap;
+}
+
+.productCarrusel {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.8rem;
+    z-index: 8;
+    box-sizing: border-box;
+}
+
+.productCard {
+    flex: 0 0 58vw;
+    height: auto;
+    background-color: rgba(249, 249, 249, 0.91);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 0.2rem 0.8rem;
+}
+
+.first {
+    border-top-left-radius: 3vw;
+    border-bottom-left-radius: 3vw;
+}
+
+.last {
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
+}
+
+.productCardImg {
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productCardImg img {
+    width: auto;
+    height: 86%;
+}
+
+.productCardDescription {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid rgb(209, 209, 209);
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+}
+
+.productCardDescription p:first-child {
+    font-family: "MB";
+    font-size: 1rem;
+    line-height: 1.1rem;
+    color: black;
+    margin: 0 0 0.2rem 0;
+}
+
+.productCardDescription p:last-child {
+    font-family: "ML";
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.54);
+    margin: 0;
+}
+
+.productCardLegend {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid rgb(209, 209, 209);
+    padding: 0.1rem 0.2rem;
+    box-sizing: border-box;
+    font-family: "ML";
+    font-size: 0.85rem;
+    color: rgb(10, 63, 76);
+    margin: 0;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    background: linear-gradient(140deg, rgba(169, 230, 241, 0.2), rgba(114, 200, 190, 0.25));
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: "DR";
+    color: rgba(0, 0, 0, 0.68);
+    font-size: 1rem;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    z-index: 10;
+}
+
+footer i {
+    color: rgba(0, 0, 0, 0.68);
+    font-size: 1rem;
+}
+
+.quizModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem 0.5REM;
+    box-sizing: border-box;
+    opacity: 0;
+    z-index: 20;
+    background: linear-gradient(90deg, rgba(255, 254, 252, 0.764), rgba(222, 222, 222, 0.781));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    gap: 1%;
+    overflow: hidden;
+}
+
+.quizModal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.quizHeader {
+    width: 100%;
+    height: 2.3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1.5rem;
+}
+
+.quizHeader button {
+    width: auto;
+    height: auto;
+    border: none;
+    background-color: rgba(154, 81, 81, 0);
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.91);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-right: 1rem;
+}
+
+.quizHeader p {
+    font-family: "ML";
+    color: rgba(0, 0, 0, 0.379);
+    font-size: 1.2rem;
+}
+
+.quizContent {
+    width: 100%;
+    height: auto;
+    padding: 0.3rem 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #a8ba8d00;
+    box-sizing: border-box;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.quizContent.not-visible {
+    opacity: 0;
+}
+
+.quizLabel {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem;
+    font-family: "MB";
+    font-size: 1.2rem;
+    color: rgb(24, 12, 0);
+    background-color: rgba(255, 0, 0, 0);
+    box-sizing: border-box;
+    margin-bottom: 0.9rem;
+}
+
+.quizLabelLast {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem;
+    font-family: "MB";
+    font-size: 1.2rem;
+    color: rgb(24, 12, 0);
+    background-color: rgba(255, 0, 0, 0);
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+}
+
+.quizOption {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0.8rem 1rem;
+    color: rgb(24, 12, 0);
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.29);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-sizing: border-box;
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    text-align: left;
+    transition: background-color 0.5s ease;
+}
+
+.quizOption.active {
+    background-color: #c9c1a7;
+    color: #2a1907;
+}
+
+.tono {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.moreno {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #432e1e;
+    border-radius: 0.2rem;
+    margin-left: 0.5rem;
+}
+
+.canela {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #c79b6c;
+    border-radius: 0.2rem;
+    margin-left: 0.5rem;
+}
+
+.blanco {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #edddd2;
+    border-radius: 0.2rem;
+    margin-left: 0.5rem;
+}
+
+.optionTitle {
+    font-family: "MB";
+    font-size: 1.2rem;
+    margin: 0;
+
+}
+
+.optionDescription {
+    font-family: "ML";
+    font-size: 0.9rem;
+    margin: 0;
+    margin-top: 2%;
+    opacity: 0.7;
+}
+
+.nextButtonContainer {
+    width: 100%;
+    height: auto;
+    padding: 0.6rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.progressBar {
+    position: relative;
+    width: 93%;
+    height: 1.5rem;
+    background-color: rgba(128, 128, 128, 0.206);
+    margin-bottom: 0.8rem;
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    color: rgba(18, 18, 18, 0.746);
+    font-family: "ML";
+    font-size: 0.7rem;
+    overflow: hidden;
+    transition: opacity 0.5s ease;
+    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+}
+
+.progressBar p {
+    z-index: 20;
+}
+
+.progressBar::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--progress-width, 20%);
+    /* Inicia en 20% (1ª pregunta) */
+    background: linear-gradient(165deg, #ffffff, #fff9e0);
+    transition: width 0.5s ease;
+    /* Transición para el ancho del progreso */
+    border-radius: 0.2rem;
+}
+
+.nextButton {
+    height: 3.7rem;
+    width: 95%;
+    border-radius: 1rem;
+    background-color: #fbf9f1;
+    color: #1e1700;
+    font-family: "MB";
+    border: none;
+    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.nextButton p {
+    font-size: 1.2rem;
+}
+
+.quizChoosing {
+    height: auto;
+    width: 88%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.593);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.quizChossing.disabled {
+    height: 0;
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+.choosingLabel {
+    font-family: "ML";
+    color: rgba(0, 0, 0, 0.546);
+}
+
+.answer {
+    font-family: "MB";
+    margin-left: 3%;
+}
+
+.goalsContainer1 {
+    width: 15%;
+}
+
+.goalsContainer2 {
+    width: 85%;
+}
+
+.goalsContainer2 ul {
+    list-style-position: outside
+}
+
+.goalsContainer2 ul li {
+    font-family: 'MB';
+    list-style-type: circle;
+    list-style-position: inside;
+    /* La viñeta se coloca dentro del contenedor */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    /* O un ancho fijo según tu diseño */
+    padding-left: 0.3rem;
+}
+
+.modalExplicationTitle {
+    width: 95%;
+    height: auto;
+    font-size: 1.2rem;
+    color: rgb(0, 19, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0.6rem 1rem;
+    background-color: rgba(44, 100, 44, 0.343);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin-top: 1.5rem;
+    border-radius: 5px;
+}
+
+.modalExplicationTitle p,
+.modalExplicationTitle i {
+    margin: 0;
+}
+
+.modalExplication {
+    max-height: 12rem;
+    overflow: auto;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.161);
+}
+
+.modalExplication ul {
+    width: 95vw;
+    padding: 0rem 1.5rem;
+    box-sizing: border-box;
+    list-style: none;
+    /* Quita las viñetas */
+    /* Elimina el espacio a la izquierda */
+    margin: 0;
+}
+
+.modalExplication ul li {
+    font-family: "ML";
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    margin-top: 0.2rem;
+}
+
+ul li i {
+    font-size: 0.6rem;
+    margin-right: 0.2rem;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    /* Borde tenue */
+    border-left-color: rgb(255, 251, 232);
+    /* Color para el borde giratorio */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    /* Animación de giro */
+    display: inline-block;
+}
+
+/* Definición de la animación */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

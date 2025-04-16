@@ -1,0 +1,208 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermaBox | Selector de rutina</title>
+    <link rel="stylesheet" href="css/packs-picker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+
+    <div class="firstInfo">
+        <i class="fa-solid fa-book"></i>
+        <p>Guía de aplicación incluida en la caja</p>
+        
+    </div>
+
+    <div class="secondInfo">
+        <i class="fa-solid fa-user-pen"></i>
+        <p>Rutinas diseñadas para ti</p>
+    </div>
+
+    <div class="routineCarrusel">
+
+        <div class="routineCard base">
+            <div class="routineTitleBase">RUTINA BASE</div>
+            <div class="routinePhotoZone" id="basePhoto"></div>
+            <div class="productsIncluded" id="baseNames"></div>
+
+            <div class="routineDivider"></div>
+
+            <div class="routinePriceZone" id="basePrice">$80.000 COP</div>
+
+            <div class="routineDivider"></div>
+
+            <div class="benefitsZone">
+                <div class="benefit">
+                    <i class="fa-solid fa-check"></i>
+                    <p>Perfecto para principiantes</p>
+                </div>
+
+                <div class="benefit">
+                    <i class="fa-solid fa-check"></i>
+                    <p>Solo lo necesario</p>
+                </div>
+            </div>
+
+            <div class="routineDivider"></div>
+
+            <button class="addSunscreen sunscreenBase" id="addBase">
+                <p>INCLUIR BLOQUEADOR</p>
+                <p>+30.000</p>
+            </button>
+
+            <button class="acquireButtonBase" id="acquireBase">ESCOGER</button>
+        </div>
+
+
+        <div class="routineCard premium">
+            <div class="routineTitlePremium">RUTINA PREMIUM</div>
+            <div class="routinePhotoZone" id="premiumPhoto">
+
+            </div>
+            <div class="productsIncluded" id="premiumNames">
+
+            </div>
+
+            <div class="routineDivider"></div>
+
+            <div class="routinePriceZone" id="premiumPrice">$150.000 COP</div>
+
+            <div class="routineDivider"></div>
+
+            <div class="benefitsZone">
+                <div class="benefit">
+                    <i class="fa-solid fa-check"></i>
+                    <p>Ingredientes más puros</p>
+                </div>
+
+                <div class="benefit">
+                    <i class="fa-solid fa-check"></i>
+                    <p>Mejores resultados</p>
+                </div>
+            </div>
+
+            <div class="routineDivider"></div>
+
+            <button class="addSunscreen sunscreenPremium" id="addPremium">
+                <p>INCLUIR BLOQUEADOR</p>
+                <p>+90.000</p>
+            </button>
+
+            <button class="acquireButtonPremium" id="acquirePremium">ESCOGER</button>
+        </div>
+
+
+        <div class="routineCard premium">
+            <div class="routineTitlePremium">RUTINA PREMIUM+</div>
+            <div class="routinePhotoZone" id="premiumPlusPhoto">
+
+            </div>
+            <div class="productsIncluded" id="premiumPlusNames">
+
+            </div>
+
+            <div class="routineDivider"></div>
+
+            <div class="routinePriceZone" id="premiumPlusPrice">$250.000 COP</div>
+
+            <div class="routineDivider"></div>
+
+            <div class="benefitsZone">
+                <div class="benefit">
+                    <i class="fa-regular fa-star"></i>
+                    <p>Igual que la <i>Premium</i>, pero con un potenciador.</p>
+                </div>
+
+
+            </div>
+
+            <div class="routineDivider"></div>
+
+            <button class="addSunscreen sunscreenPremium" id="addPremiumPlus">
+                <p>INCLUIR BLOQUEADOR</p>
+                <p>+90.000</p>
+            </button>
+
+            <button class="acquireButtonPremium" id="acquirePremiumPlus">ESCOGER</button>
+        </div>
+    </div>
+
+    <section class="routineDescription">
+        <div class="routineDescriptionTitle">
+            <p>Productos de las rutinas</p>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        div.productZone
+        
+        
+        
+    </section>
+
+    <div class="modal" id="modal">
+        <div class="modalHeader">
+            <button id="closeModal">
+                <i class="fa-solid fa-circle-arrow-left"></i>
+            </button>
+            <p>Resumen de tu pedido</p>
+        </div>
+
+        <div class="modalProductsContainer" id="modalProductsContainer">
+
+
+        </div>
+
+        <div class="subTotalAndDelivery">
+            <div class="subtotal" id="subtotal">
+
+            </div>
+            <div class="delivery" id="delivery">
+
+            </div>
+        </div>
+        <div class="total">
+            <div class="subtotal" id="total">
+
+            </div>
+        </div>
+
+        <div class="confirmationButton">
+            <button id="confirmationButton">Ir a pago</button>
+        </div>
+    </div>
+
+    <div class="modalWhatsApp" id="modalWhatsApp">
+        <div class="modalWhatsAppContent">
+            <div class="modalWhatsAppContentWindow">
+                <div class="modalWhatsAppContentWindow1">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <div class="modalWhatsAppContentWindow2">
+                    <p>Un bot en <b>WhatsApp</b> te pedirá los datos de envío y te indicará cuando llegará a tu domicilio.</p>
+                </div>
+            </div>
+            <div class="windowDivider"></div>
+            <div class="modalWhatsAppContentWindow">
+                <div class="modalWhatsAppContentWindow1">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <div class="modalWhatsAppContentWindow2">
+                    <p>Puedes pagar <b>contraentrega</b> o con cualquier <b>billetera digital</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="modalWhatsAppAccept">
+            <p>OK</p>
+        </div>
+        <div class="modalWhatsAppClose">
+            <p>VOLVER</p>
+        </div>
+    </div>
+
+    <script defer src="js/packs-picker.js"></script>
+</body>
+
+</html>
