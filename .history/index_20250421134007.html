@@ -20,18 +20,18 @@
 </head>
 
 <body>
-    <div class="overlay"></div>
-    <header>
-        <p class="logo">DermaBox</p>
-        <button class="log-in">
-            <i class="fa-solid fa-user-pen"></i>
-        </button>
-    </header>
-
-    <section class="hero">
-        <p>Rutinas de cuidado facial personalizadas</p>
-    </section>
-
+    <div class="headerContainer">
+        <header>
+            <p class="logo">DermaBox</p>
+            <button class="log-in">
+                <i class="fa-solid fa-user-pen"></i>
+            </button>
+        </header>
+    
+        <section class="hero">
+            <p>Rutinas de cuidado facial personalizadas</p>
+        </section>
+    </div>
     <section class="carrusel">
         <div class="carruselContent" id="carruselContent">
             <div class="carruselTitle">
@@ -57,8 +57,8 @@
     </div>
 
     <div class="routineCard base">
-        <p class="routineCardTitle">RUTINA LIGHT</p>
-        <p class="routineCardDescription">Incluye productos de calidad Base.</p>
+        <p class="routineCardTitle">RUTINA BASE</p>
+        <p class="routineCardDescription">Incluye productos de calidad Estándar.</p>
         <div class="priceZoneContainer">
             <div class="priceZone basePrice">
                 Desde $80.000
@@ -91,6 +91,105 @@
     </div>
 
 
+
+    <button class="quizOpenerAux" id="quizOpener2">Empezar</button>
+
+    <div class="disclaimer"><i class="fa-solid fa-shield-halved"></i> Productos aprobados dermatológicamente</div>
+
+    <div class="routineTypeBase">ALGUNOS PRODUCTOS LIGHT</div>
+
+    <div class="productCarrusel" id="base">
+        <div class="productCard first">
+            <div class="productCardImg">
+                <img src="assets/products/LB4.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Jabón Suave de Leche de Alergibon</p>
+                <p>90g</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Jabón suave a base de leche, ideal para pieles sensibles.</p>
+            </div>
+        </div>
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/LB3.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Espuma Facial Equilibrante de Ana María</p>
+                <p>120ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Espuma facial equilibrante que limpia en profundidad.</p>
+            </div>
+        </div>
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/HB2.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Suero Just Niacinamida 10 de REVOX</p>
+                <p>30ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Suero que unifica el tono y reduce imperfecciones.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="routineTypePremium">ALGUNOS PRODUCTOS PREMIUM</div>
+
+    <div class="productCarrusel" id="premium">
+        <div class="productCard first">
+            <div class="productCardImg">
+                <img src="assets/products/LP5.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Eucerin Ph5 Syndet</p>
+                <p>250ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Limpiador suave pH5, alivia irritaciones y evita la resequedad.</p>
+            </div>
+        </div>
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/HP2.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Bean Essence de Mixsoon</p>
+                <p>30ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Esencia facial con extracto de frijol, que refina poros e ilumina la piel.</p>
+            </div>
+        </div>
+
+        <div class="productCard">
+            <div class="productCardImg">
+                <img src="assets/products/P5.webp" alt="">
+            </div>
+            <div class="productCardDescription">
+                <p>Madagascar Centella Tea-Trica de SKIN1004</p>
+                <p>30ml</p>
+            </div>
+            <div class="productCardLegend">
+                <p>Suero concentrado con extractos de centella y té, que calma irritaciones.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
     <div class="quizModal" id="quizModal">
         <div class="quizHeader">
             <button class="quizCloser" id="quizCloser">
@@ -115,22 +214,7 @@
     </div>
 
     <footer>
-        <div class="footerLogo">
-            <p>DermaBox</p>
-        </div>
-
-        <div class="footerDescription">
-            <p>Creador de rutinas de <br><b>cuidado facial</b></p>
-        </div>
-
-        <div class="footerContent">
-            <div class="footerContent1">
-                <img src="assets/footer_img_1.png" alt="">
-            </div>
-            <div class="footerContent2">
-                <img src="assets/footer_img_2.png" alt="">
-            </div>
-        </div>
+        <p>®© 2025. Todos los derechos reservados</p>
     </footer>
     <script src="js/data-description.js"></script>
     <script src="js/data.js"></script>

@@ -50,13 +50,13 @@ body::before {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(135deg,
-            #fff3cd 0%,
+            #ffe28a 0%,
             /* Oro pálido */
             #f8f6f0 25%,
             /* Marfil suave */
             #ffffff 50%,
             /* Gris perla */
-            #f9e7e9 75%,
+            #e8cfd1 75%,
             /* Rosa empolvado */
             #d8e2e8 100%
             /* Azul grisáceo claro */
@@ -66,22 +66,18 @@ body::before {
     /* Para que quede detrás del contenido */
 }
 
-
-.overlay {
-    pointer-events: none;
-    position: absolute;
+.headerContainer {
     width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background-color: rgba(255, 255, 255, 0.076);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    overflow: hidden;
+    height: auto;
+    background-image: url(../assets/header.webp); /* Replace with your image path */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 15;
 }
 
 header {
-    width: 92%;
+    width: 100%;
     height: auto;
     padding: 0rem 1rem;
     box-sizing: border-box;
@@ -91,30 +87,29 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.206);
 }
 
 .logo {
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: 1.3rem;
     font-family: 'DR';
     z-index: 10;
 }
 
 .log-in {
-    width: auto;
-    height: auto;
+    width: 45%;
+    height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.055);
+    background-color: rgba(255, 255, 255, 0.055);
     font-size: 1rem;
-    color: black;
+    color: rgb(255, 255, 255);
     font-family: 'CI';
     border: none;
     border-radius: 2vw;
     z-index: 10;
-    padding: 0.8rem 2.5rem;
-    box-sizing: border-box;
 }
 
 .hero {
@@ -128,14 +123,11 @@ header {
     box-sizing: border-box;
     font-family: "ML";
     font-size: 1.3rem;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.142);
+    color: rgb(255, 255, 255);
     z-index: 10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .hero p {
@@ -146,7 +138,7 @@ header {
 
 .carrusel {
     width: 92%;
-    height: 12rem;
+    height: auto;
     padding: 1.2rem 0.8rem;
     display: flex;
     justify-content: center;
@@ -160,11 +152,10 @@ header {
 
 .carruselContent {
     height: auto;
-    width: 100%;
+    width: auto;
     padding: 0;
     opacity: 0;
     transition: opacity 0.5s ease;
-
 }
 
 .carruselContent.visible {
@@ -210,11 +201,6 @@ header {
     margin: 0;
 }
 
-.carruselTitle i {
-    font-size: 0.8rem;
-    margin-right: 0.3rem;
-}
-
 .carruselDescription p {
     font-family: "ML";
     color: #2B2200;
@@ -256,9 +242,28 @@ header {
     margin-bottom: 8%;
     z-index: 10;
     border: none;
-    -webkit-box-shadow: 0px 4px 0px 4px rgba(0, 0, 0, 0.39);
-    -moz-box-shadow: 0px 4px 0px 4px rgba(0, 0, 0, 0.39);
-    box-shadow: 0px 4px 0px 4px rgba(0, 0, 0, 0.39);
+    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.298);
+    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.298);
+    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.298);
+}
+
+.quizOpenerAux {
+    width: 90%;
+    height: 3.5rem;
+    background-color: #fbf9f1;
+    border-radius: 1rem;
+    color: #1e1700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "ML";
+    font-size: 1.9em;
+    margin: 0rem 0rem 35% 0rem;
+    z-index: 10;
+    border: none;
+    box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 2px 5px 24px 3px rgba(0, 0, 0, 0.15);
 }
 
 .productCarruselTitle {
@@ -935,108 +940,6 @@ footer i {
 ul li i {
     font-size: 0.6rem;
     margin-right: 0.2rem;
-}
-
-footer {
-    background-image: url("/assets/footer.webp");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vw;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 15%;
-}
-
-.footerLogo {
-    width: auto;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
-    font-family: "DR";
-    color: rgba(0, 0, 0, 0.778);
-    z-index: 30;
-    border-radius: 0.5rem;
-}
-
-.footerDescription {
-    width: 100%;
-    height: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    box-sizing: border-box;
-    z-index: 30;
-}
-
-.footerDescription p {
-    line-height: 1rem;
-    font-family: "ML";
-    font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.621);
-    text-align: center;
-}
-
-.footerContent {
-    width: 100%;
-    height: 50%;
-    z-index: 30;
-    display: flex;
-    flex-direction: row;
-}
-
-.footerContent1 {
-    height: 100%;
-    width: 50%;
-    border-right: 1px solid rgba(176, 176, 176, 0.232);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footerContent1 img {
-    height: auto;
-    width: 60%;
-}
-
-.footerContent2 {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footerContent2 img {
-    height: auto;
-    width: 70%;
-}
-
-.footerLogo p {
-    margin: 0;
-}
-
-footer::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    /* efecto blur */
-    background: rgba(255, 255, 255, 0.735);
-    /* overlay translúcido */
-    z-index: 20;
 }
 
 .spinner {

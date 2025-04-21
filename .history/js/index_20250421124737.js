@@ -82,9 +82,11 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(swapCarouselContent, 5000);
 
   const quizOpener = document.getElementById("quizOpener")
+  const quizOpener2 = document.getElementById("quizOpener2")
   const quizCloser = document.querySelector(".quizCloser")
   const quizModal = document.getElementById("quizModal")
   quizOpener.addEventListener("click", openModal);
+  quizOpener2.addEventListener("click", openModal);
   quizCloser.addEventListener("click", closeModal)
 
   let currentOptionIndex = 0;
