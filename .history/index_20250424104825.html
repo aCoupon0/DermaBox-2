@@ -138,8 +138,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const btn1 = document.getElementById('quizOpener');
-            const btn2 = document.getElementById('quizOpener2');
-            const nextBtn = document.getElementById('nextButton');
 
             function trackQuizOpen() {
                 gtag('event', 'cuestionario_abierto', {
@@ -149,33 +147,7 @@
             }
 
             if (btn1) btn1.addEventListener('click', trackQuizOpen);
-            if (btn2) btn2.addEventListener('click', trackQuizOpen);
-
-            // —— NUEVO CÓDIGO PARA TRACKEAR CLICS EN “Siguiente” ——
-            let clickCount = 0;
-            const eventNames = [
-                'primera_pregunta_respondida',
-                'segunda_pregunta_respondida',
-                'tercera_pregunta_respondida',
-                'cuarta_pregunta_respondida',
-                'quinta_pregunta_respondida',
-                'cuestionario_terminado'
-            ];
-
-            if (nextBtn) {
-                nextBtn.addEventListener('click', function () {
-                    // Dispara el evento correspondiente (hasta 6 clicks)
-                    const eventName = eventNames[clickCount] || eventNames[eventNames.length - 1];
-                    gtag('event', eventName, {
-                        'event_category': 'interacción',
-                        'event_label': 'Botón siguiente cuestionario'
-                    });
-                    clickCount = Math.min(clickCount + 1, eventNames.length - 1);
-                });
-            }
-            // ————————————————————————————————————————————————
         });
     </script>
 </body>
-
 </html>
