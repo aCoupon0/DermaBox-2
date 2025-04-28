@@ -239,60 +239,60 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // —– TRACKING DE LAS RUTINAS —–
-            const btnBase = document.getElementById('acquireBase');
-            const btnPremium = document.getElementById('acquirePremium');
-            const btnPremiumPlus = document.getElementById('acquirePremiumPlus');
-
-            if (btnBase) {
-                btnBase.addEventListener('click', () => {
-                    gtag('event', 'rutina_base_escogida', {
-                        'event_category': 'interacción',
-                        'event_label': 'Escoger rutina Light'
-                    });
-                });
-            }
-
-            if (btnPremium) {
-                btnPremium.addEventListener('click', () => {
-                    gtag('event', 'rutina_premium_escogida', {
-                        'event_category': 'interacción',
-                        'event_label': 'Escoger rutina Premium'
-                    });
-                });
-            }
-
-            if (btnPremiumPlus) {
-                btnPremiumPlus.addEventListener('click', () => {
-                    gtag('event', 'rutina_premiumplus_escogida', {
-                        'event_category': 'interacción',
-                        'event_label': 'Escoger rutina Premium+'
-                    });
-                });
-            }
-
-            // —– TRACKING DE LOS “SHOW” —–
-            document.querySelectorAll('#show1, #show2, #show3')
-                .forEach(el => el.addEventListener('click', () => {
-                    gtag('event', 'detalle_rutina_vista', {
-                        'event_category': 'interacción',
-                        'event_label': 'Mostrar detalle rutina'
-                    });
-                }));
-
-            // —– TRACKING DEL BOTÓN DE CONFIRMACIÓN —–
-            const btnConfirm = document.getElementById('confirmationButton');
-            if (btnConfirm) {
-                btnConfirm.addEventListener('click', () => {
-                    gtag('event', 'modalWhatsapp', {
-                        'event_category': 'interacción',
-                        'event_label': 'Enviar pedido por WhatsApp'
-                    });
-                });
-            }
+          // —– TRACKING DE LAS RUTINAS —–
+          const btnBase = document.getElementById('acquireBase');
+          const btnPremium = document.getElementById('acquirePremium');
+          const btnPremiumPlus = document.getElementById('acquirePremiumPlus');
+      
+          if (btnBase) {
+            btnBase.addEventListener('click', () => {
+              gtag('event', 'rutina_base_escogida', {
+                'event_category': 'interacción',
+                'event_label': 'Escoger rutina Light'
+              });
+            });
+          }
+      
+          if (btnPremium) {
+            btnPremium.addEventListener('click', () => {
+              gtag('event', 'rutina_premium_escogida', {
+                'event_category': 'interacción',
+                'event_label': 'Escoger rutina Premium'
+              });
+            });
+          }
+      
+          if (btnPremiumPlus) {
+            btnPremiumPlus.addEventListener('click', () => {
+              gtag('event', 'rutina_premiumplus_escogida', {
+                'event_category': 'interacción',
+                'event_label': 'Escoger rutina Premium+'
+              });
+            });
+          }
+      
+          // —– TRACKING DE LOS “SHOW” —–
+          document.querySelectorAll('#show1, #show2, #show3')
+            .forEach(el => el.addEventListener('click', () => {
+              gtag('event', 'detalle_rutina_vista', {
+                'event_category': 'interacción',
+                'event_label': 'Mostrar detalle rutina'
+              });
+            }));
+      
+          // —– TRACKING DEL BOTÓN DE CONFIRMACIÓN —–
+          const btnConfirm = document.getElementById('confirmationButton');
+          if (btnConfirm) {
+            btnConfirm.addEventListener('click', () => {
+              gtag('event', 'modalWhatsapp', {
+                'event_category': 'interacción',
+                'event_label': 'Enviar pedido por WhatsApp'
+              });
+            });
+          }
         });
-    </script>
-
+      </script>
+      
 </body>
 
 </html>
