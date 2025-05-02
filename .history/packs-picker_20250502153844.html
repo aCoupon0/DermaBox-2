@@ -1,6 +1,14 @@
 <html lang="en">
 
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K9KDER1PPP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-K9KDER1PPP');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DermaBox | Selector de rutina</title>
@@ -11,11 +19,7 @@
 <body>
     <div class="overlay"></div>
 
-    <div class="firstInfo">
-        <i class="fa-solid fa-book"></i>
-        <p>Guía de aplicación incluida en la caja</p>
-        
-    </div>
+    
 
     <div class="secondInfo">
         <i class="fa-solid fa-user-pen"></i>
@@ -25,13 +29,13 @@
     <div class="routineCarrusel">
 
         <div class="routineCard base">
-            <div class="routineTitleBase">RUTINA BASE</div>
+            <div class="routineTitleBase">RUTINA LIGHT</div>
             <div class="routinePhotoZone" id="basePhoto"></div>
             <div class="productsIncluded" id="baseNames"></div>
 
             <div class="routineDivider"></div>
 
-            <div class="routinePriceZone" id="basePrice">$80.000 COP</div>
+            <div class="routinePriceZone" id="basePrice"></div>
 
             <div class="routineDivider"></div>
 
@@ -49,11 +53,6 @@
 
             <div class="routineDivider"></div>
 
-            <button class="addSunscreen sunscreenBase" id="addBase">
-                <p>INCLUIR BLOQUEADOR</p>
-                <p>+30.000</p>
-            </button>
-
             <button class="acquireButtonBase" id="acquireBase">ESCOGER</button>
         </div>
 
@@ -69,7 +68,7 @@
 
             <div class="routineDivider"></div>
 
-            <div class="routinePriceZone" id="premiumPrice">$150.000 COP</div>
+            <div class="routinePriceZone" id="premiumPrice"></div>
 
             <div class="routineDivider"></div>
 
@@ -87,11 +86,6 @@
 
             <div class="routineDivider"></div>
 
-            <button class="addSunscreen sunscreenPremium" id="addPremium">
-                <p>INCLUIR BLOQUEADOR</p>
-                <p>+90.000</p>
-            </button>
-
             <button class="acquireButtonPremium" id="acquirePremium">ESCOGER</button>
         </div>
 
@@ -107,7 +101,7 @@
 
             <div class="routineDivider"></div>
 
-            <div class="routinePriceZone" id="premiumPlusPrice">$250.000 COP</div>
+            <div class="routinePriceZone" id="premiumPlusPrice"></div>
 
             <div class="routineDivider"></div>
 
@@ -122,25 +116,65 @@
 
             <div class="routineDivider"></div>
 
-            <button class="addSunscreen sunscreenPremium" id="addPremiumPlus">
-                <p>INCLUIR BLOQUEADOR</p>
-                <p>+90.000</p>
-            </button>
-
             <button class="acquireButtonPremium" id="acquirePremiumPlus">ESCOGER</button>
         </div>
     </div>
 
+    <div class="firstInfo">
+        <i class="fa-solid fa-book"></i>
+        <p>Cómo aplicarla se envía a WhatsApp</p>
+
+    </div>
+
     <section class="routineDescription">
         <div class="routineDescriptionTitle">
-            <p>Productos de las rutinas</p>
+            <p>Los productos de tus rutinas</p>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
-        div.productZone
-        
-        
-        
+
+        <div class="productLabel">
+            <p class="active" id="show1">Limpiadores</p>
+            <p id="show2">Hidratantes</p>
+            <p id="show3">Potenciador</p>
+        </div>
+
+        <div class="productZone">
+            <div class="routineColumnBase">
+                <div class="title">LIGHT</div>
+            </div>
+            <div class="routineColumnPremium">
+                <div class="title" id="premiumLabel">PREMIUM</div>
+            </div>
+        </div>
+
+        <div class="productZoneContainer" id="productZoneContainer">
+
+        </div>
+
+
     </section>
+
+    <footer>
+        <div class="footerLogo">
+            <p>DermaBox</p>
+        </div>
+
+        <div class="footerDescription">
+            <p>Creador de rutinas de <br><b>cuidado facial</b></p>
+        </div>
+
+        <div class="footerContent">
+            <div class="footerContent1">
+                <img src="assets/footer_img_1.png" alt="">
+            </div>
+            <div class="footerContent2">
+                <img src="assets/footer_img_2.png" alt="">
+            </div>
+        </div>
+    </footer>
+
+
+
 
     <div class="modal" id="modal">
         <div class="modalHeader">
@@ -181,7 +215,8 @@
                     <i class="fa-solid fa-circle-info"></i>
                 </div>
                 <div class="modalWhatsAppContentWindow2">
-                    <p>Un bot en <b>WhatsApp</b> te pedirá los datos de envío y te indicará cuando llegará a tu domicilio.</p>
+                    <p>Un bot en <b>WhatsApp</b> te pedirá los datos de envío y te indicará cuando llegará a tu
+                        domicilio.</p>
                 </div>
             </div>
             <div class="windowDivider"></div>
@@ -195,7 +230,7 @@
             </div>
         </div>
         <div class="modalWhatsAppAccept">
-            <p>OK</p>
+            <p>ENVIAR PEDIDO POR WHATSAPP</p>
         </div>
         <div class="modalWhatsAppClose">
             <p>VOLVER</p>
@@ -203,6 +238,63 @@
     </div>
 
     <script defer src="js/packs-picker.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // —– TRACKING DE LAS RUTINAS —–
+            const btnBase = document.getElementById('acquireBase');
+            const btnPremium = document.getElementById('acquirePremium');
+            const btnPremiumPlus = document.getElementById('acquirePremiumPlus');
+
+            if (btnBase) {
+                btnBase.addEventListener('click', () => {
+                    gtag('event', 'rutina_base_escogida', {
+                        'event_category': 'interacción',
+                        'event_label': 'Escoger rutina Light'
+                    });
+                });
+            }
+
+            if (btnPremium) {
+                btnPremium.addEventListener('click', () => {
+                    gtag('event', 'rutina_premium_escogida', {
+                        'event_category': 'interacción',
+                        'event_label': 'Escoger rutina Premium'
+                    });
+                });
+            }
+
+            if (btnPremiumPlus) {
+                btnPremiumPlus.addEventListener('click', () => {
+                    gtag('event', 'rutina_premiumplus_escogida', {
+                        'event_category': 'interacción',
+                        'event_label': 'Escoger rutina Premium+'
+                    });
+                });
+            }
+
+            // —– TRACKING DE LOS “SHOW” —–
+            document.querySelectorAll('#show1, #show2, #show3')
+                .forEach(el => el.addEventListener('click', () => {
+                    gtag('event', 'detalle_rutina_vista', {
+                        'event_category': 'interacción',
+                        'event_label': 'Mostrar detalle rutina'
+                    });
+                }));
+
+            // —– TRACKING DEL BOTÓN DE CONFIRMACIÓN —–
+            const btnConfirm = document.getElementById('confirmationButton');
+            if (btnConfirm) {
+                btnConfirm.addEventListener('click', () => {
+                    gtag('event', 'modalWhatsapp', {
+                        'event_category': 'interacción',
+                        'event_label': 'Enviar pedido por WhatsApp'
+                    });
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>

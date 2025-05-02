@@ -660,4 +660,10 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Faltan elementos en localStorage. No se realiza la redirección.");
     }
   }
+
+
+  window.addEventListener('DOMContentLoaded', function () {
+    openModal();
+  });
+  
 });

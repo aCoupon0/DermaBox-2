@@ -1,10 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  const overlay = document.querySelector('.overlay');
-  function ajustarAlturaOverlay() {
-    overlay.style.height = document.body.offsetHeight + "px";
-  }
-  ajustarAlturaOverlay();
 
 
 
@@ -14,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const carruselInfo = [
     `
     <div class="carruselTitle">
-      <p>Encuentra tu rutina perfecta</p>
+      <p><i class="fa-solid fa-crown"></i> Encuentra tu rutina perfecta</p>
     </div>
     <div class="carruselDescription">
       <p>Responde unas preguntas sobre tu piel y crearemos una rutina que se ajuste a ti.</p>
@@ -22,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   `,
     `
         <div class="carruselTitle">
-          <p>Productos dermatológicamente comprobados</p>
+          <p><i class="fa-solid fa-shield-halved"></i> Productos dermatológicamente comprobados</p>
         </div>
         <div class="carruselDescription">
           <p>+300 productos coreanos y europeos originales</p>
@@ -30,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       `,
     `
         <div class="carruselTitle">
-          <p>Apto para cualquier presupuesto</p>
+          <p><i class="fa-solid fa-money-bill"></i> Apto para cualquier presupuesto</p>
         </div>
         <div class="carruselDescription">
           <p>Te presentamos 2 rutinas de diferente precio. Puedes decidir cuál prefieres.</p>
@@ -38,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       `,
     `
         <div class="carruselTitle">
-          <p>Guía de aplicación incluida</p>
+          <p><i class="fa-solid fa-book"></i> Guía de aplicación incluida</p>
         </div>
         <div class="carruselDescription">
           <p>Incluimos en el paquete una guía de cómo y cuándo aplicar la rutina.</p>
@@ -153,19 +148,19 @@ document.addEventListener("DOMContentLoaded", function () {
     `
       <div class="quizLabel">¿Qué objetivos te gustaría alcanzar?</div>
       <div class="quizOption" id="Op4">
-        <p class="optionTitle">Reducir Acné</p>
+        <p class="optionTitle">+ Reducir Acné</p>
       </div>
 
       <div class="quizOption" id="Op5">
-        <p class="optionTitle">Hidratar y Sanar</p>
+        <p class="optionTitle">+ Hidratar y Sanar</p>
       </div>
 
       <div class="quizOption" id="Op6">
-        <p class="optionTitle">Antienvejecimiento</p>
+        <p class="optionTitle">+ Antienvejecimiento</p>
       </div>
             
       <div class="quizOption" id="Op7">
-        <p class="optionTitle">Disimular Cicatrices y/o Manchas</p>
+        <p class="optionTitle">+ Tratar Cicatrices y/o Manchas</p>
       </div>
       `,
 
@@ -268,13 +263,27 @@ document.addEventListener("DOMContentLoaded", function () {
               optionValue = "CM";
               break;
           }
-          // Si ya está activo, se quita y se remueve el valor del arreglo; si no, se añade.
+          // Obtenemos el párrafo hijo para actualizar el texto
+          const pTitle = target.querySelector(".optionTitle");
+
+          // Si ya está activo, se quita; si no, se añade.
           if (target.classList.contains("active")) {
             target.classList.remove("active");
             objetivos = objetivos.filter(item => item !== optionValue);
+            // Al deseleccionar, restablecemos el prefijo a "+ "
+            if (pTitle.textContent.startsWith("- ")) {
+              pTitle.textContent = "+ " + pTitle.textContent.slice(2);
+            }
           } else {
             target.classList.add("active");
             objetivos.push(optionValue);
+            // Al seleccionar, cambiamos el prefijo a "- "
+            if (pTitle.textContent.startsWith("+ ")) {
+              pTitle.textContent = "- " + pTitle.textContent.slice(2);
+            } else {
+              // En caso de que no tenga el prefijo por alguna razón, lo añadimos
+              pTitle.textContent = "- " + pTitle.textContent;
+            }
           }
           console.log("Objetivos:", objetivos);
 
@@ -408,7 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
       encontrarProductos();
 
       // Console log con nombre y categoría de los objetos en localStorage
-      const keys = ["LB", "LP", "HB", "HP", "BB", "BP", "P"];
+      const keys = ["LB", "LP", "HB", "HP", "P"];
       const resumen = keys.map(key => {
         const item = JSON.parse(localStorage.getItem(key));
         return item ? { categoria: item.categoria, nombre: item.nombre } : null;
@@ -480,7 +489,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (iso === "S") {
       // Si iso es "S", el casoParticular es solo ["ISO", tonoDePiel]
-      casoParticular = ["ISO", tonoDePiel];
+      casoParticular = ["ISO"];
+      localStorage.setItem("casoP", JSON.stringify(casoParticular));
       isoContainerHTML = `
         <div class="quizChoosing" id="isoContainer">
           <p class="choosingLabel">Isotretinoina</p>
@@ -501,7 +511,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Si iso es "N", ordenamos los objetivos y formamos el casoParticular completo
       const orden = ["RA", "HS", "A", "CM"];
       const objetivosOrdenados = orden.filter(cod => objetivos.includes(cod));
-      casoParticular = [tipoPiel, objetivosOrdenados, tonoDePiel, sensibilidad];
+      casoParticular = [tipoPiel, objetivosOrdenados, sensibilidad];
+      localStorage.setItem("casoP", JSON.stringify(casoParticular));
 
       const casoStr = JSON.stringify(casoParticular).replace(/\s/g, "");
       if (typeof descriptions !== "undefined") {
@@ -540,14 +551,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (cod === "RA") html += `<li>Reducir Acné</li>`;
         else if (cod === "HS") html += `<li>Hidratar y Sanar</li>`;
         else if (cod === "A") html += `<li>Antienvejecimiento</li>`;
-        else if (cod === "CM") html += `<li>Disimular Cicatrices y/o Manchas</li>`;
+        else if (cod === "CM") html += `<li>Tratar Manchas y/o Cicatrices</li>`;
       });
       return html;
     })();
 
     // Armar el HTML final del resumen
     let resumenHTML = `
-      <div class="quizLabelLast">Tus respuestas</div>
+    <div class="modalExplicationTitle">
+    <p class="choosingLabel">Tus respuestas</p>
+    <i class="fa-solid fa-circle-down"></i>
+  </div>
       
       <div class="quizChoosing" id="skinTypeContainer">
         <p class="choosingLabel">Piel</p>
@@ -593,7 +607,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const casoStr = JSON.stringify(casoParticular).replace(/\s/g, ""); // Convertir casoParticular a string sin espacios
     console.log("Caso Particular String:", casoStr);
 
-    const todasLasClaves = ["LB", "LP", "HB", "HP", "BB", "BP", "P", "descripcionGlobal"];
+    const todasLasClaves = ["LB", "LP", "HB", "HP", "P"];
     todasLasClaves.forEach(key => localStorage.removeItem(key));
 
     const categorias = [
@@ -601,15 +615,14 @@ document.addEventListener("DOMContentLoaded", function () {
       { array: limpiadoresPremium, key: "LP" },
       { array: hidratantesBase, key: "HB" },
       { array: hidratantesPremium, key: "HP" },
-      { array: bloqueadoresBase, key: "BB" },
-      { array: bloqueadoresPremium, key: "BP" },
       { array: potenciadores, key: "P" }
     ];
 
     categorias.forEach(({ array, key }) => {
       const producto = array.find(item => {
         return item.configuraciones.some(config => {
-          const configStr = config.replace(/\s/g, ""); // Eliminar espacios de la configuración
+          // Forzar la conversión a string si no lo es
+          const configStr = String(config).replace(/\s/g, "");
           return configStr === casoStr;
         });
       });
@@ -623,38 +636,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    console.log("Verificando descriptions e isoDescriptions...");
-    console.log("descriptions:", descriptions);
-    console.log("isoDescriptions:", isoDescriptions);
-
-    console.log("Buscando descripción para:", casoStr);
-
-    const fuente = iso === "N" ? descriptions : isoDescriptions; // Seleccionar la fuente correcta
-    console.log("Fuente seleccionada:", iso === "N" ? "descriptions" : "isoDescriptions");
-
-    const descripcionEncontrada = fuente.find(desc => {
-      return desc.casoParticular.some(config => {
-        const configStr = config.replace(/\s/g, "");
-        return configStr === casoStr;
-      });
-    });
-
-    if (descripcionEncontrada) {
-      console.log("Descripción encontrada:", descripcionEncontrada);
-      localStorage.setItem("descripcionGlobal", JSON.stringify(descripcionEncontrada.descripcionesFinales));
-    } else {
-      console.log("No se encontró una descripción para el caso particular.");
-    }
-
     // Mostrar en consola los valores finales en localStorage
     console.log("LB:", localStorage.getItem("LB"));
     console.log("LP:", localStorage.getItem("LP"));
     console.log("HB:", localStorage.getItem("HB"));
     console.log("HP:", localStorage.getItem("HP"));
-    console.log("BB:", localStorage.getItem("BB"));
-    console.log("BP:", localStorage.getItem("BP"));
     console.log("P:", localStorage.getItem("P"));
-    console.log("descripcionGlobal:", localStorage.getItem("descripcionGlobal"));
 
     const todoExiste = todasLasClaves.every(key => {
       const item = localStorage.getItem(key);
@@ -675,6 +662,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-
-  window.addEventListener("resize", ajustarAlturaOverlay);
+  window.addEventListener('DOMContentLoaded', function () {
+    openModal();
+  });
+  
 });
