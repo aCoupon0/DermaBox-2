@@ -444,7 +444,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     closeButton.addEventListener("click", () => {
         modal.classList.remove("visible");
-        routineDeleted = []
     });
 
     document.addEventListener('click', function (evt) {
@@ -454,13 +453,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const fullId = delBtn.id;                   // e.g. "HP12"
             const prefix = fullId.match(/^[A-Z]+/)[0];  // e.g. "HP"
 
-            // Traigo el objeto eliminado
+            // Declaro antes para que exista siempre
             let productObj = { valor: 0 };
+
             const stored = localStorage.getItem(prefix);
             if (stored) {
                 productObj = JSON.parse(stored);
                 routineDeleted.push(productObj);
-                console.log('Después de DELETE:', JSON.stringify(routineDeleted, null, 2));
+                console.log(JSON.stringify(routineDeleted, null, 2));
             }
 
             // Reemplazo botón
@@ -491,7 +491,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // === ADD ===
         const addBtn = evt.target.closest('button.productAdd');
         if (addBtn) {
-            // 1) Determinar rutina y precio
             const subt = subtotalContainer.textContent;
             let rutina, precioRutina, etiquetaGratis = 'GRATIS';
 
@@ -501,30 +500,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else if (subt.includes('Rutina PremiumPlus')) {
                 rutina = rutinaPremiumPlus;
-                precioRutina = premiumPlusRoutinePrice;  // asegúrate que esta variable es number
+                precioRutina = premiumPlusPrice;
             }
             else {
                 rutina = rutinaPremium;
                 precioRutina = premiumRoutinePrice;
             }
 
-            // 2) Antes de añadir de nuevo, quitamos de routineDeleted
-            const fullIdAdd = addBtn.id;                   // e.g. "HP12"
-            const prefixAdd = fullIdAdd.match(/^[A-Z]+/)[0];
-            const storedAdd = localStorage.getItem(prefixAdd);
-            if (storedAdd) {
-                const objToRemove = JSON.parse(storedAdd);
-                // Encontrar índice en routineDeleted por alguna clave única (e.g. nombre)
-                const idx = routineDeleted.findIndex(item =>
-                    item.nombre === objToRemove.nombre
-                );
-                if (idx !== -1) {
-                    routineDeleted.splice(idx, 1);
-                    console.log('Después de ADD (removed):', JSON.stringify(routineDeleted, null, 2));
-                }
-            }
-
-            // 3) Llamamos a updateAfterAdd
             updateAfterAdd(rutina, precioRutina, etiquetaGratis);
             return;
         }
@@ -745,13 +727,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const mensaje = `
     Deseo confirmar el pedido de una ${rutina} con los siguientes productos:
     ${productosFiltrados.join("\n")}
-    Por un valor de ${total}.
+    Por un valor de ${total} con envío ${envio}.
     El código del pedido es *${codigoPedido}*
     *POR FAVOR ENVÍA ESTE MENSAJE*
     `.trim();
 
-        window.location.href =
-            `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    console.log( JSON.stringify(productosFiltrados, null, 2) );
+
     }
 
     console.log("Recuperando casoP...");

@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function crearDescripcion(productoB, productoP) {
         let html = "";
-
+      
         // Bloque 1: Calificación general  
         // Si el producto base (B) está definido, se muestran sus estrellas en el primer contenedor;
         // en caso contrario, el primer contenedor queda vacío. En ambos se muestran las estrellas según el tier del producto premium.
@@ -155,42 +155,42 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="productDescriptionIcon">
         <div class="productDescriptionIconStars">`;
         if (productoB) {
-            for (let i = 0; i < productoB.tier; i++) {
-                html += `<i class="fa-solid fa-star"></i>`;
-            }
+          for (let i = 0; i < productoB.tier; i++) {
+            html += `<i class="fa-solid fa-star"></i>`;
+          }
         }
         html += `</div>
         <div class="productDescriptionIconStars">`;
         for (let i = 0; i < productoP.tier; i++) {
-            html += `<i class="fa-solid fa-star"></i>`;
+          html += `<i class="fa-solid fa-star"></i>`;
         }
         html += `</div>
       </div>`;
-
+      
         // Bloque 2: Ventajas simples  
         // Si productoB está definido, se recorre su propiedad "ventajas" y solo se muestran aquellas
         // que también aparecen en productoP. En caso de que productoB sea undefined, se recorren TODAS las ventajas de productoP,
         // y en el icono de la izquierda se deja vacío (sin marca).
         if (productoB) {
-            productoB.ventajas.forEach(function (ventaja) {
-                if (productoP.ventajas.includes(ventaja)) {
-                    html += `<p>${ventaja}</p>
+          productoB.ventajas.forEach(function(ventaja) {
+            if (productoP.ventajas.includes(ventaja)) {
+              html += `<p>${ventaja}</p>
       <div class="productDescriptionIcon">
         <div class="productDescriptionIcon1"><i class="fa-solid fa-check"></i></div>
         <div class="productDescriptionIcon2"><i class="fa-solid fa-check"></i></div>
       </div>`;
-                }
-            });
+            }
+          });
         } else {
-            productoP.ventajas.forEach(function (ventaja) {
-                html += `<p>${ventaja}</p>
+          productoP.ventajas.forEach(function(ventaja) {
+            html += `<p>${ventaja}</p>
       <div class="productDescriptionIcon">
         <div class="productDescriptionIcon1"></div>
         <div class="productDescriptionIcon2"><i class="fa-solid fa-check"></i></div>
       </div>`;
-            });
+          });
         }
-
+      
         // Bloque 3: Ventaja adicional  
         // Se muestra el contenido de productoP.ventajaAdicional.  
         // En el caso en que productoB esté definido, el primer icono se muestra como 'xmark' con color (indicando que la base no lo posee);
@@ -199,14 +199,14 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="productDescriptionIcon">
         <div class="productDescriptionIcon1">`;
         if (productoB) {
-            html += `<i class="fa-solid fa-xmark" style="color: #aaaaaa;"></i>`;
+          html += `<i class="fa-solid fa-xmark" style="color: #aaaaaa;"></i>`;
         }
         html += `</div>
         <div class="productDescriptionIcon2"><i class="fa-solid fa-check"></i></div>
       </div>`;
-
+      
         return html;
-    }
+      }
 
     function renderizarDescripciones() {
         // Primera estructura: utiliza rutinaBase[0], rutinaPremium[0] y descripciones.descripcionInicial1
@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         const precioFinal = precioBase;
-        const envioCosto = envio === "GRATIS" ? 0 : 9000;
+        const envioCosto = envio === "GRATIS" ? 0 : 6000;
 
         subtotalContainer.innerHTML = `
         <p>Rutina <b>${rutina === rutinaBase
@@ -366,6 +366,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         ? "PremiumPlus"
                         : "Desconocida"
             }</b></p>
+            <p>$${precioFinal.toLocaleString("es-CO")} COP</p>
         `;
 
         deliveryContainer.innerHTML = `
@@ -379,55 +380,6 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
         modal.classList.add("visible");
-    }
-
-    function updateAfterAdd(rutina, precioBase, envio) {
-        modalProductsContainer.innerHTML = "";
-
-        rutina.forEach((producto, index) => {
-
-            const productDiv = document.createElement("div");
-            productDiv.classList.add("modalProduct");
-            productDiv.innerHTML = `
-                <div class="modalProductPhoto">
-                    <img src="assets/products/${producto.foto}.webp" alt="">
-                </div>
-                <div class="modalProductDescription">
-                    <p>${producto.nombre}</p>
-                    <p>${producto.cantidad}ml x 1</p>
-                </div>
-                <div class="modalProductButton">
-                    <button class="productDelete" id="${producto.foto}">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </div>
-            `;
-            modalProductsContainer.appendChild(productDiv);
-        });
-
-        const precioFinal = precioBase;
-        const envioCosto = envio === "GRATIS" ? 0 : 9000;
-
-        subtotalContainer.innerHTML = `
-        <p>Rutina <b>${rutina === rutinaBase
-                ? "Light"
-                : rutina === rutinaPremium
-                    ? "Premium"
-                    : rutina === rutinaPremiumPlus
-                        ? "PremiumPlus"
-                        : "Desconocida"
-            }</b></p>
-        `;
-
-        deliveryContainer.innerHTML = `
-            <p>Costo de envío</p>
-            <p>${envio}</p>
-        `;
-
-        totalContainer.innerHTML = `
-            <p>TOTAL</p>
-            <p>$${(precioFinal + envioCosto).toLocaleString("es-CO")} COP</p>
-        `;
     }
 
     openButtonBase.addEventListener("click", () => {
@@ -444,115 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     closeButton.addEventListener("click", () => {
         modal.classList.remove("visible");
-        routineDeleted = []
     });
-
-    document.addEventListener('click', function (evt) {
-        // === DELETE ===
-        const delBtn = evt.target.closest('button.productDelete');
-        if (delBtn) {
-            const fullId = delBtn.id;                   // e.g. "HP12"
-            const prefix = fullId.match(/^[A-Z]+/)[0];  // e.g. "HP"
-
-            // Traigo el objeto eliminado
-            let productObj = { valor: 0 };
-            const stored = localStorage.getItem(prefix);
-            if (stored) {
-                productObj = JSON.parse(stored);
-                routineDeleted.push(productObj);
-                console.log('Después de DELETE:', JSON.stringify(routineDeleted, null, 2));
-            }
-
-            // Reemplazo botón
-            const wrapper = delBtn.parentElement;
-            wrapper.innerHTML = `
-            <button class="productAdd" id="${fullId}">
-              <i class="fa-solid fa-plus"></i>
-            </button>`;
-
-            // Actualizo envío
-            deliveryContainer.innerHTML = `
-            <p>Costo de envío</p>
-            <p>$9.000</p>`;
-
-            // Calculo nuevo TOTAL
-            const prevTotalText = totalContainer.querySelectorAll('p')[1].textContent;
-            const prevTotal = parseOnlyNumber(prevTotalText);
-            const productValue = productObj.valor || 0;
-            const newTotal = (prevTotal - productValue) + 9000;
-
-            totalContainer.innerHTML = `
-            <p>TOTAL</p>
-            <p>${formatCOP(newTotal)}</p>`;
-
-            return;
-        }
-
-        // === ADD ===
-        const addBtn = evt.target.closest('button.productAdd');
-        if (addBtn) {
-            // 1) Determinar rutina y precio
-            const subt = subtotalContainer.textContent;
-            let rutina, precioRutina, etiquetaGratis = 'GRATIS';
-
-            if (subt.includes('Rutina Light')) {
-                rutina = rutinaBase;
-                precioRutina = baseRoutinePrice;
-            }
-            else if (subt.includes('Rutina PremiumPlus')) {
-                rutina = rutinaPremiumPlus;
-                precioRutina = premiumPlusRoutinePrice;  // asegúrate que esta variable es number
-            }
-            else {
-                rutina = rutinaPremium;
-                precioRutina = premiumRoutinePrice;
-            }
-
-            // 2) Antes de añadir de nuevo, quitamos de routineDeleted
-            const fullIdAdd = addBtn.id;                   // e.g. "HP12"
-            const prefixAdd = fullIdAdd.match(/^[A-Z]+/)[0];
-            const storedAdd = localStorage.getItem(prefixAdd);
-            if (storedAdd) {
-                const objToRemove = JSON.parse(storedAdd);
-                // Encontrar índice en routineDeleted por alguna clave única (e.g. nombre)
-                const idx = routineDeleted.findIndex(item =>
-                    item.nombre === objToRemove.nombre
-                );
-                if (idx !== -1) {
-                    routineDeleted.splice(idx, 1);
-                    console.log('Después de ADD (removed):', JSON.stringify(routineDeleted, null, 2));
-                }
-            }
-
-            // 3) Llamamos a updateAfterAdd
-            updateAfterAdd(rutina, precioRutina, etiquetaGratis);
-            return;
-        }
-    });
-
-    function parseOnlyNumber(str) {
-        const digits = str.replace(/[^\d]/g, '');
-        return digits ? Number(digits) : 0;
-    }
-
-    // 5) Formatear número a moneda COP
-    function formatCOP(value) {
-        return '$' + value.toLocaleString('es-CO') + ' COP';
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     const overlayProductList = document.querySelector(".routineDescriptionContentOverlay");
@@ -702,14 +546,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const rutinaElement = document.querySelector("#subtotal p");
         let rutina = "";
         if (rutinaElement) {
-            rutina = rutinaElement
-                .innerHTML
-                .replace(/<b>(.*?)<\/b>/g, "$1")
-                .trim();
+            rutina = rutinaElement.innerHTML.replace(/<b>(.*?)<\/b>/g, "$1").trim();
         }
+
         rutina = `*${rutina}*`;
 
-        // 1) Construimos array completo
         const productos = [];
         document.querySelectorAll(".modalProduct").forEach(product => {
             const descripcion = product.querySelector(".modalProductDescription");
@@ -723,17 +564,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // 2) FILTRADO: eliminamos de productos cualquiera cuyo nombre esté en routineDeleted
-        //    extraemos nombres de routineDeleted (suponemos propiedad .nombre)
-        const nombresEliminados = routineDeleted.map(item => item.nombre);
-        const productosFiltrados = productos.filter(line => {
-            const m = line.match(/-\s*\*(.*?)\*/);
-            if (!m) return true;              // si no matchea, lo dejamos
-            const nombre = m[1].trim();
-            return !nombresEliminados.includes(nombre);
-        });
-
-        // 3) Resto idéntico
         const totalElement = document.querySelector("#total p:nth-child(2)");
         const envioElement = document.querySelector("#delivery p:nth-child(2)");
         const total = totalElement ? `*${totalElement.textContent.trim()}*` : "";
@@ -742,16 +572,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const casoP = JSON.parse(localStorage.getItem("casoP")) || [];
         const codigoPedido = generarCodigoPedido(casoP);
 
-        const mensaje = `
-    Deseo confirmar el pedido de una ${rutina} con los siguientes productos:
-    ${productosFiltrados.join("\n")}
-    Por un valor de ${total}.
-    El código del pedido es *${codigoPedido}*
-    *POR FAVOR ENVÍA ESTE MENSAJE*
-    `.trim();
+        const mensaje = `Deseo confirmar el pedido de una ${rutina} con los siguientes productos:\n${productos.join("\n")}\nPor un valor de ${total} con envío ${envio}.\nEl código del pedido es *${codigoPedido}* \n*POR FAVOR ENVÍA ESTE MENSAJE* \n`;
 
-        window.location.href =
-            `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+        window.location.href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     }
 
     console.log("Recuperando casoP...");

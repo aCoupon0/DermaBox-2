@@ -919,29 +919,7 @@ footer::before {
 .modalProductButton {
     width: 10%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.productDelete {
-    width: 100%;
-    height: 45%;
-    border-radius: 0.5rem;
-    background-color: rgb(255, 206, 206);
-    color: rgb(85, 9, 9);
-    font-size: 0.95rem;
-    border: none;
-}
-
-.productAdd {
-    width: 100%;
-    height: 45%;
-    border-radius: 0.5rem;
-    background-color: rgb(218, 255, 206);
-    color: rgb(9, 85, 38);
-    font-size: 0.95rem;
-    border: none;
+    background-color: red;
 }
 
 .modalProductDescription p:first-child {

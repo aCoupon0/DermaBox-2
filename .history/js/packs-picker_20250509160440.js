@@ -444,91 +444,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
     closeButton.addEventListener("click", () => {
         modal.classList.remove("visible");
-        routineDeleted = []
     });
 
-    document.addEventListener('click', function (evt) {
+    document.addEventListener('click', function(evt){
         // === DELETE ===
         const delBtn = evt.target.closest('button.productDelete');
-        if (delBtn) {
-            const fullId = delBtn.id;                   // e.g. "HP12"
-            const prefix = fullId.match(/^[A-Z]+/)[0];  // e.g. "HP"
-
-            // Traigo el objeto eliminado
-            let productObj = { valor: 0 };
-            const stored = localStorage.getItem(prefix);
-            if (stored) {
-                productObj = JSON.parse(stored);
-                routineDeleted.push(productObj);
-                console.log('Después de DELETE:', JSON.stringify(routineDeleted, null, 2));
-            }
-
-            // Reemplazo botón
-            const wrapper = delBtn.parentElement;
-            wrapper.innerHTML = `
+        if(delBtn){
+          const fullId = delBtn.id;                   // e.g. "HP12"
+          const prefix = fullId.match(/^[A-Z]+/)[0];  // e.g. "HP"
+    
+          // Declaro antes para que exista siempre
+          let productObj = { valor: 0 };
+    
+          const stored = localStorage.getItem(prefix);
+          if(stored){
+            productObj = JSON.parse(stored);
+            routineDeleted.push(productObj);
+            console.log( JSON.stringify(routineDeleted, null, 2) );
+          }
+    
+          // Reemplazo botón
+          const wrapper = delBtn.parentElement;
+          wrapper.innerHTML = `
             <button class="productAdd" id="${fullId}">
               <i class="fa-solid fa-plus"></i>
             </button>`;
-
-            // Actualizo envío
-            deliveryContainer.innerHTML = `
+    
+          // Actualizo envío
+          deliveryContainer.innerHTML = `
             <p>Costo de envío</p>
             <p>$9.000</p>`;
-
-            // Calculo nuevo TOTAL
-            const prevTotalText = totalContainer.querySelectorAll('p')[1].textContent;
-            const prevTotal = parseOnlyNumber(prevTotalText);
-            const productValue = productObj.valor || 0;
-            const newTotal = (prevTotal - productValue) + 9000;
-
-            totalContainer.innerHTML = `
+    
+          // Calculo nuevo TOTAL
+          const prevTotalText = totalContainer.querySelectorAll('p')[1].textContent;
+          const prevTotal     = parseOnlyNumber(prevTotalText);
+          const productValue  = productObj.valor || 0;
+          const newTotal      = (prevTotal - productValue) + 9000;
+    
+          totalContainer.innerHTML = `
             <p>TOTAL</p>
             <p>${formatCOP(newTotal)}</p>`;
-
-            return;
+    
+          return;
         }
-
+    
         // === ADD ===
         const addBtn = evt.target.closest('button.productAdd');
-        if (addBtn) {
-            // 1) Determinar rutina y precio
-            const subt = subtotalContainer.textContent;
-            let rutina, precioRutina, etiquetaGratis = 'GRATIS';
-
-            if (subt.includes('Rutina Light')) {
-                rutina = rutinaBase;
-                precioRutina = baseRoutinePrice;
-            }
-            else if (subt.includes('Rutina PremiumPlus')) {
-                rutina = rutinaPremiumPlus;
-                precioRutina = premiumPlusRoutinePrice;  // asegúrate que esta variable es number
-            }
-            else {
-                rutina = rutinaPremium;
-                precioRutina = premiumRoutinePrice;
-            }
-
-            // 2) Antes de añadir de nuevo, quitamos de routineDeleted
-            const fullIdAdd = addBtn.id;                   // e.g. "HP12"
-            const prefixAdd = fullIdAdd.match(/^[A-Z]+/)[0];
-            const storedAdd = localStorage.getItem(prefixAdd);
-            if (storedAdd) {
-                const objToRemove = JSON.parse(storedAdd);
-                // Encontrar índice en routineDeleted por alguna clave única (e.g. nombre)
-                const idx = routineDeleted.findIndex(item =>
-                    item.nombre === objToRemove.nombre
-                );
-                if (idx !== -1) {
-                    routineDeleted.splice(idx, 1);
-                    console.log('Después de ADD (removed):', JSON.stringify(routineDeleted, null, 2));
-                }
-            }
-
-            // 3) Llamamos a updateAfterAdd
-            updateAfterAdd(rutina, precioRutina, etiquetaGratis);
-            return;
+        if(addBtn){
+          const subt = subtotalContainer.textContent;
+          let rutina, precioRutina, etiquetaGratis = 'GRATIS';
+    
+          if(subt.includes('Rutina Light')) {
+            rutina        = rutinaBase;
+            precioRutina  = baseRoutinePrice;
+          }
+          else if(subt.includes('Rutina PremiumPlus')) {
+            rutina        = rutinaPremiumPlus;
+            precioRutina  = premiumPlusPrice;
+          }
+          else {
+            rutina        = rutinaPremium;
+            precioRutina  = premiumRoutinePrice;
+          }
+    
+          updateAfterAdd(rutina, precioRutina, etiquetaGratis);
+          return;
         }
-    });
+      });
 
     function parseOnlyNumber(str) {
         const digits = str.replace(/[^\d]/g, '');
@@ -702,14 +684,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const rutinaElement = document.querySelector("#subtotal p");
         let rutina = "";
         if (rutinaElement) {
-            rutina = rutinaElement
-                .innerHTML
-                .replace(/<b>(.*?)<\/b>/g, "$1")
-                .trim();
+            rutina = rutinaElement.innerHTML.replace(/<b>(.*?)<\/b>/g, "$1").trim();
         }
+
         rutina = `*${rutina}*`;
 
-        // 1) Construimos array completo
         const productos = [];
         document.querySelectorAll(".modalProduct").forEach(product => {
             const descripcion = product.querySelector(".modalProductDescription");
@@ -723,17 +702,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // 2) FILTRADO: eliminamos de productos cualquiera cuyo nombre esté en routineDeleted
-        //    extraemos nombres de routineDeleted (suponemos propiedad .nombre)
-        const nombresEliminados = routineDeleted.map(item => item.nombre);
-        const productosFiltrados = productos.filter(line => {
-            const m = line.match(/-\s*\*(.*?)\*/);
-            if (!m) return true;              // si no matchea, lo dejamos
-            const nombre = m[1].trim();
-            return !nombresEliminados.includes(nombre);
-        });
-
-        // 3) Resto idéntico
         const totalElement = document.querySelector("#total p:nth-child(2)");
         const envioElement = document.querySelector("#delivery p:nth-child(2)");
         const total = totalElement ? `*${totalElement.textContent.trim()}*` : "";
@@ -742,16 +710,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const casoP = JSON.parse(localStorage.getItem("casoP")) || [];
         const codigoPedido = generarCodigoPedido(casoP);
 
-        const mensaje = `
-    Deseo confirmar el pedido de una ${rutina} con los siguientes productos:
-    ${productosFiltrados.join("\n")}
-    Por un valor de ${total}.
-    El código del pedido es *${codigoPedido}*
-    *POR FAVOR ENVÍA ESTE MENSAJE*
-    `.trim();
+        const mensaje = `Deseo confirmar el pedido de una ${rutina} con los siguientes productos:\n${productos.join("\n")}\nPor un valor de ${total} con envío ${envio}.\nEl código del pedido es *${codigoPedido}* \n*POR FAVOR ENVÍA ESTE MENSAJE* \n`;
 
-        window.location.href =
-            `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+        window.location.href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     }
 
     console.log("Recuperando casoP...");
