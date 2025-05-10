@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const deliveryContainer = document.getElementById("delivery");
     const totalContainer = document.getElementById("total");
 
-    let routineDeleted = []
+    const routineDeleted = []
 
     function openModal(rutina, precioBase, envio) {
         modalProductsContainer.innerHTML = "";
@@ -524,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 event_category: 'modal_rutina',
                 event_label: fullIdAdd
             });
-
+            
             if (storedAdd) {
                 const objToRemove = JSON.parse(storedAdd);
                 // Encontrar índice en routineDeleted por alguna clave única (e.g. nombre)
@@ -656,23 +656,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (openWhatsApp && modalWhatsApp && closeWhatsApp) {
         openWhatsApp.addEventListener("click", function () {
-            // 1) Tomamos el <p> dentro de #subtotal
-            const subtotalP = document.querySelector('#subtotal p');
-            const subtotalText = subtotalP
-                ? subtotalP.textContent.replace(/^Rutina\s*/i, '').trim()  // deja "Light", "Premium" o "PremiumPlus"
-                : '';
-
-            // 2) Definimos el máximo de eliminados según la rutina
-            //    Light y Premium → máximo 2; PremiumPlus → máximo 3
-            const maxDeleted = subtotalText === 'PremiumPlus' ? 3 : 2;
-
-            // 3) Si ya hay demasiados eliminados, mostramos alerta
-            if (routineDeleted.length >= maxDeleted) {
-                alert("Incluye al menos un producto en tu pedido");
-                return;  // no abrimos el modal
-            }
-
-            // 4) Si todo OK, abrimos el modal
             modalWhatsApp.classList.add("active");
         });
 

@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const deliveryContainer = document.getElementById("delivery");
     const totalContainer = document.getElementById("total");
 
-    let routineDeleted = []
+    const routineDeleted = []
 
     function openModal(rutina, precioBase, envio) {
         modalProductsContainer.innerHTML = "";
